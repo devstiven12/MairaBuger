@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MairaBurger - Las mejores hamburguesas caseras</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#ff3b3f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen active">
+        <div class="splash-content">
+            <div class="logo-animation">
+                <i class="fas fa-hamburger"></i>
+            </div>
+            <h1 class="splash-title">MairaBurger</h1>
+            <p class="splash-subtitle">Las mejores hamburguesas caseras</p>
+            <div class="loading-bar">
+                <div class="loading-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <i class="fas fa-hamburger"></i>
+                    <span>MairaBurger</span>
+                </div>
+                
+                <nav class="nav-menu" id="nav-menu">
+                    <ul class="nav-list">
+                        <li><a href="#home" class="nav-link">Inicio</a></li>
+                        <li><a href="#menu" class="nav-link">Menú</a></li>
+                        <li><a href="#promotions" class="nav-link">Promociones</a></li>
+                        <li><a href="#reviews" class="nav-link">Reseñas</a></li>
+                        <li><a href="#location" class="nav-link">Ubicación</a></li>
+                    </ul>
+                    <div class="nav-auth">
+                        <button class="btn-secondary" id="login-btn">Iniciar Sesión</button>
+                        <button class="btn-primary" id="register-btn">Registrarse</button>
+                    </div>
+                </nav>
+
+                <div class="nav-actions">
+                    <button class="cart-btn" id="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </button>
+                    <button class="btn-secondary" id="install-btn" style="display: none;">
+                        Instalar App
+                    </button>
+                    <button class="hamburger" id="hamburger-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="gradient-text">MairaBurger</span>
+                </h1>
+                <p class="hero-subtitle">Las hamburguesas caseras más deliciosas de la ciudad</p>
+                <p class="hero-description">Ingredientes frescos, sabor auténtico y la pasión de lo hecho en casa</p>
+                <div class="hero-buttons">
+                    <a href="#menu" class="btn-primary btn-large">Ver Menú</a>
+                    <a href="#promotions" class="btn-secondary btn-large">Promociones</a>
+                </div>
+            </div>
+            <div class="hero-scroll">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="menu-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Nuestro <span class="gradient-text">Menú</span></h2>
+                    <p>Cada hamburguesa está preparada con ingredientes frescos y mucho amor</p>
+                </div>
+
+                <!-- Menu Categories -->
+                <div class="menu-categories">
+                    <button class="category-btn active" data-category="all">Todos</button>
+                    <button class="category-btn" data-category="hamburgers">Hamburguesas</button>
+                    <button class="category-btn" data-category="drinks">Bebidas</button>
+                    <button class="category-btn" data-category="sides">Acompañamientos</button>
+                </div>
+
+                <!-- Menu Items -->
+                <div class="menu-grid" id="menu-grid">
+                    <!-- Items will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Promotions Section -->
+        <section id="promotions" class="promotions-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><span class="gradient-text">Promociones</span> Especiales</h2>
+                    <p>No te pierdas nuestras increíbles ofertas y descuentos especiales</p>
+                </div>
+
+                <div class="promotions-grid">
+                    <div class="promo-card promo-red">
+                        <div class="promo-header">
+                            <i class="fas fa-gift"></i>
+                            <h3>2x1 en Hamburguesas</h3>
+                            <div class="promo-discount">50% OFF</div>
+                        </div>
+                        <div class="promo-body">
+                            <p>Todos los martes lleva 2 hamburguesas por el precio de 1</p>
+                            <span class="promo-validity">Válido todos los martes</span>
+                        </div>
+                    </div>
+
+                    <div class="promo-card promo-orange">
+                        <div class="promo-header">
+                            <i class="fas fa-percentage"></i>
+                            <h3>Combo Familiar</h3>
+                            <div class="promo-discount">15% OFF</div>
+                        </div>
+                        <div class="promo-body">
+                            <p>4 hamburguesas + 4 bebidas + papás familiares</p>
+                            <span class="promo-validity">Válido fines de semana</span>
+                        </div>
+                    </div>
+
+                    <!-- <div class="promo-card promo-green">
+                        <div class="promo-header">
+                            <i class="fas fa-clock"></i>
+                            <h3>Happy Hour</h3>
+                            <div class="promo-discount">30% OFF</div>
+                        </div>
+                        <div class="promo-body">
+                            <p>De 3:00 PM a 6:00 PM - Todas las bebidas con descuento</p>
+                            <span class="promo-validity">Lunes a viernes</span>
+                        </div>
+                    </div> -->
+                </div>
+
+                <!-- Newsletter -->
+                <div class="newsletter">
+                    <h3>¡No te pierdas ninguna promoción!</h3>
+                    <p>Suscríbete para recibir nuestras mejores ofertas directamente en tu email</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu email" required>
+                        <button type="submit" class="btn-primary">Suscribirse</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section id="reviews" class="reviews-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Lo que dicen nuestros <span class="gradient-text">Clientes</span></h2>
+                    <p>Miles de clientes satisfechos avalan nuestra calidad</p>
+                </div>
+
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?auto=compress&cs=tinysrgb&w=150" alt="María González" class="reviewer-avatar">
+                            <div class="reviewer-info">
+                                <h4>María González</h4>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">¡Increíbles hamburguesas! La carne es súper jugosa y los ingredientes muy frescos. Mi favorita es la BBQ Deluxe.</p>
+                        <span class="review-date">Hace 2 días</span>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Carlos Rodríguez" class="reviewer-avatar">
+                            <div class="reviewer-info">
+                                <h4>Carlos Rodríguez</h4>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">Excelente servicio y la comida llegó súper rápido. La hamburguesa veggie es sorprendentemente deliciosa.</p>
+                        <span class="review-date">Hace 1 semana</span>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Ana Martínez" class="reviewer-avatar">
+                            <div class="reviewer-info">
+                                <h4>Ana Martínez</h4>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">La mejor hamburguesa que he probado en años. El sabor casero se nota en cada bocado. ¡Totalmente recomendado!</p>
+                        <span class="review-date">Hace 3 días</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section id="location" class="location-section">
+            <div class="container">
+                <div class="location-content">
+                    <div class="location-info">
+                        <h2>Nuestra <span class="gradient-text">Ubicación</span></h2>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Dirección</h4>
+                                <p>La virginia<br>Barrio, divino niño</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Teléfono</h4>
+                                <p>+57 3104710120</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Horarios</h4>
+                                <p>Lun - Dom: 11:00 AM - 10:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <div class="location-map">
+                        <iframe 
+                            < src="https://www.google.com/maps/embed?pb=!3m2!1ses-419!2sco!4v1764217054786!5m2!1ses-419!2sco!6m8!1m7!1sxa-6vu3ZqYuFMvM1BG5sBw!2m2!1d4.493552302880106!2d-75.64565944750926!3f37.449255270659776!4f-24.46614430463889!5f0.7820865974627469"
+                            width="100%" 
+                            height="300" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-hamburger"></i>
+                        <span>MairaBurger</span>
+                    </div>
+                    <p>Las hamburguesas caseras más deliciosas de la ciudad, preparadas con amor e ingredientes frescos.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#home">Inicio</a></li>
+                        <li><a href="#menu">Menú</a></li>
+                        <li><a href="#promotions">Promociones</a></li>
+                        <li><a href="#reviews">Reseñas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +57 3104710120</li>
+                        <li><i class="fas fa-envelope"></i> info@mairaburger.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> La virginia, Barrio, Divino niño</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MairaBurger. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="auth-modal-title">Iniciar Sesión</h3>
+                <button class="close-btn" id="auth-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="auth-form">
+                    <div class="form-group">
+                        <input type="email" id="auth-email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="auth-password" placeholder="Contraseña" required>
+                    </div>
+                    <div class="form-group" id="auth-name-group" style="display: none;">
+                        <input type="text" id="auth-name" placeholder="Nombre completo">
+                    </div>
+                    <button type="submit" class="btn-primary btn-full" id="auth-submit">Iniciar Sesión</button>
+                </form>
+                <p class="auth-switch">
+                    ¿No tienes cuenta? <a href="#" id="auth-switch-link">Regístrate aquí</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3>Carrito de Compras</h3>
+                <button class="close-btn" id="cart-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="cart-items"></div>
+                <div class="cart-summary">
+                    <div class="cart-total">
+                        <h4>Total: $<span id="cart-total">0</span></h4>
+                    </div>
+                    <div class="delivery-options">
+                        <h4>Opciones de Entrega</h4>
+                        <label>
+                            <input type="radio" name="delivery" value="pickup" checked>
+                            Recoger en tienda
+                        </label>
+                        <label>
+                            <input type="radio" name="delivery" value="delivery">
+                            Entrega a domicilio (+$3,000)
+                        </label>
+                    </div>
+                    <div class="payment-options">
+                        <h4>Método de Pago</h4>
+                        <label>
+                            <input type="radio" name="payment" value="cash" checked>
+                            Efectivo
+                        </label>
+                        <label>
+                            <input type="radio" name="payment" value="digital">
+                            Pago Digital
+                        </label>
+                    </div>
+                    <div class="time-selection">
+                        <h4>Hora de Entrega/Recogida</h4>
+                        <input type="datetime-local" id="delivery-time">
+                    </div>
+                    <button class="btn-primary btn-full" id="checkout-btn">Realizar Pedido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customize Modal -->
+    <div id="customize-modal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3 id="customize-title">Personalizar Hamburguesa</h3>
+                <button class="close-btn" id="customize-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="customize-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
