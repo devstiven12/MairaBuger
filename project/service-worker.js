@@ -1,5 +1,5 @@
-const CACHE_NAME = 'mairaburger-cache-v2';
-const FONT_CACHE = 'mairaburger-fonts-v2';
+const CACHE_NAME = 'mairaburger-cache-v4';
+const FONT_CACHE = 'mairaburger-fonts-v4';
 const PRECACHE_ASSETS = [
   './',
   './index.html',
@@ -7,6 +7,10 @@ const PRECACHE_ASSETS = [
   './script.js',
   './firebase-config.js',
   './manifest.webmanifest'
+  , './images/burger-icon-180.png'
+  , './images/burger-icon-192.png'
+  , './images/burger-icon-512.png'
+  , './images/burger-icon-maskable-512.png'
 ];
 
 self.addEventListener('install', (event) => {

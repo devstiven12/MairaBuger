@@ -162,7 +162,13 @@ function setupEventListeners() {
     // Botón Instalar App (solo visible cuando esté disponible)
     const handleInstallClick = async (btn) => {
             try {
-                if (!deferredPrompt) return;
+                if (!deferredPrompt) {
+                    const httpsMsg = window.isSecureContext
+                        ? 'Tu navegador aún no muestra el botón nativo. Prueba desde Chrome/Edge en Android, o usa “Compartir > Añadir a pantalla de inicio” en Safari iPhone.'
+                        : 'La instalación requiere HTTPS o localhost. Abre el sitio con un dominio HTTPS o 127.0.0.1 en este equipo.';
+                    showNotification(httpsMsg, 'info');
+                    return;
+                }
                 deferredPrompt.prompt();
                 const { outcome } = await deferredPrompt.userChoice;
                 if (outcome === 'accepted') {
@@ -180,10 +186,6 @@ function setupEventListeners() {
     // Botón del header
     if (installBtn) {
         installBtn.addEventListener('click', async () => {
-            if (!deferredPrompt) {
-                showNotification('Si usas iPhone, abre en Safari y pulsa “Compartir > Añadir a pantalla de inicio”.', 'info');
-                return;
-            }
             await handleInstallClick(installBtn);
         });
     }
