@@ -112,6 +112,7 @@ function setupEventListeners() {
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const navMenu = document.getElementById('nav-menu');
     const installBtn = document.getElementById('install-btn');
+    const installCtaBtn = document.getElementById('install-cta-btn');
     
     hamburgerBtn.addEventListener('click', () => {
         hamburgerBtn.classList.toggle('active');
@@ -159,8 +160,7 @@ function setupEventListeners() {
     newsletterForm.addEventListener('submit', handleNewsletterSubscription);
 
     // Botón Instalar App (solo visible cuando esté disponible)
-    if (installBtn) {
-        installBtn.addEventListener('click', async () => {
+    const handleInstallClick = async (btn) => {
             try {
                 if (!deferredPrompt) return;
                 deferredPrompt.prompt();
@@ -171,10 +171,31 @@ function setupEventListeners() {
                     showNotification('Instalación cancelada.', 'info');
                 }
                 deferredPrompt = null;
-                installBtn.style.display = 'none';
+                if (btn) btn.style.display = 'none';
             } catch (e) {
                 console.log('Instalación no disponible:', e);
             }
+    };
+
+    // Botón del header
+    if (installBtn) {
+        installBtn.addEventListener('click', async () => {
+            if (!deferredPrompt) {
+                showNotification('Si usas iPhone, abre en Safari y pulsa “Compartir > Añadir a pantalla de inicio”.', 'info');
+                return;
+            }
+            await handleInstallClick(installBtn);
+        });
+    }
+
+    // Botón CTA en la sección principal
+    if (installCtaBtn) {
+        installCtaBtn.addEventListener('click', async () => {
+            if (!deferredPrompt) {
+                showNotification('Si usas iPhone, abre en Safari y pulsa “Compartir > Añadir a pantalla de inicio”.', 'info');
+                return;
+            }
+            await handleInstallClick(installCtaBtn);
         });
     }
 }
@@ -814,7 +835,9 @@ window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
     const installBtn = document.getElementById('install-btn');
+    const installCtaBtn = document.getElementById('install-cta-btn');
     if (installBtn) installBtn.style.display = 'inline-flex';
+    if (installCtaBtn) installCtaBtn.style.display = 'inline-flex';
 });
 
 // Registro del Service Worker (PWA)

@@ -1,5 +1,5 @@
-const CACHE_NAME = 'mairaburger-cache-v1';
-const FONT_CACHE = 'mairaburger-fonts-v1';
+const CACHE_NAME = 'mairaburger-cache-v2';
+const FONT_CACHE = 'mairaburger-fonts-v2';
 const PRECACHE_ASSETS = [
   './',
   './index.html',

@@ -9,6 +9,24 @@
   "description": "Las mejores hamburguesas caseras.",
   "icons": [
     {
+      "src": "https://via.placeholder.com/192.png?text=MairaBurger",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://via.placeholder.com/512.png?text=MairaBurger",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://via.placeholder.com/512.png?text=MairaBurger+Maskable",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
       "src": "images/burger-icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
@@ -34,7 +52,7 @@
     {
       "src": "images/icono_APP.jpg",
       "type": "image/jpeg",
-      "purpose": "maskable"
+      "purpose": "any"
     }
   ]
 }
